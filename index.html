@@ -23,7 +23,15 @@ h1{font-size:18px;margin:0 0 10px}.row{display:flex;gap:8px}.row input{flex:1;pa
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
 const tg=window.Telegram?.WebApp;tg?.ready();tg?.expand();
-const token=location.pathname.split('/').pop(),initData=tg?.initData||'';
+const params=new URLSearchParams(location.search);
+const token=params.get('token')||'';
+const initData=tg?.initData||'';
+
+if(!token){
+  document.getElementById('error').textContent='Не указан токен заказа';
+  document.getElementById('error').classList.remove('hidden');
+  throw new Error('Missing checkout token');
+}
 let map=null;
 const services=[['all','Все'],['cdek','СДЭК'],['ozon','Ozon'],['yandex_market','Яндекс Маркет'],['fivepost','5Post']];let selected='all',allPoints=[],markers=[],currentCity=null;
 
