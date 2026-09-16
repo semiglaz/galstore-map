@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GalStore</title>
+</head>
+<body>
+<script>
+(function () {
+  const path = window.location.pathname;
+  const parts = path.split('/').filter(Boolean);
+
+  const token = parts.length
+    ? parts[parts.length - 1]
+    : '';
+
+  if (token && token !== '404.html') {
+    window.location.replace(
+      '/galstore-map/?token=' + encodeURIComponent(token)
+    );
+  } else {
+    window.location.replace('/galstore-map/');
+  }
+})();
+</script>
+</body>
+</html>
