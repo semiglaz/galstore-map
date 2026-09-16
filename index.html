@@ -30,7 +30,6 @@ const initData=tg?.initData||'';
 if(!token){
   document.getElementById('error').textContent='Не указан токен заказа';
   document.getElementById('error').classList.remove('hidden');
-  throw new Error('Missing checkout token');
 }
 let map=null;
 const services=[['all','Все'],['cdek','СДЭК'],['ozon','Ozon'],['yandex_market','Яндекс Маркет'],['fivepost','5Post']];let selected='all',allPoints=[],markers=[],currentCity=null;
